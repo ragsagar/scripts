@@ -1,0 +1,18 @@
+#!/usr/bin/env expect
+
+set username admin
+set pass admin
+set host 192.168.1.1
+
+spawn telnet ${host}
+
+expect -re "Login:"
+send "${username}\r"
+
+expect "Password:"
+send "${pass}\r"
+
+expect -re "successful"
+send "console enable\r"
+send "restart\r"
+expect eof 
